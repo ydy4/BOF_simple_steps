@@ -54,6 +54,7 @@ ESP = 62501203
 now we compare with the dump of  ESP = 019FF130.
 
 ![10.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/10.png?raw=true)
+
 !mona compare -f C:\Program Files\Immunity Inc\Immunity Debugger\bytearray.bin -a 019FFA30.
 
 ![11.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/11.png?raw=true)
