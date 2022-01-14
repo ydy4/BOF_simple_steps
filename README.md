@@ -1,5 +1,5 @@
 # Buffer Overflow exploitation cheat
-This article show the basic necessary steps and tools to **identifie** and **exploit** a Buffer Overflow vulnerbality in Windows server application.
+This article shows the basic necessary steps and tools to **identifie** and **exploit** a Buffer Overflow vulnerbality in Windows server application.
 ### Vulnerability Identification
 ```bash
 s_readline();
